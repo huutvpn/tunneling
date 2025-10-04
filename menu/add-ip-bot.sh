@@ -100,7 +100,7 @@ echo "IP Already Exist !"
 exit 0
 fi
 echo -e ""
- read -p "  MASUKKAN USERNAME TANPA SPASI (Example : Freetunnel) : " name
+ read -p "  MASUKKAN USERNAME TANPA SPASI (Example : huutvpn) : " name
 read -p "Input Expired Days : " exp11
 exp2=`date -d "$exp11 days" +"%Y-%m-%d"`
 echo "### ${name} ${exp2} ${ip}" >> /root/iz/ip
@@ -112,7 +112,7 @@ git init &> /dev/null
 git add . &> /dev/null
 git commit -m register &> /dev/null
 git branch -M main &> /dev/null
-git remote add origin https://github.com/freetunnel/iz
+git remote add origin https://github.com/huutvpn/iz
 git push -f https://${TOKEN}@github.com/${USER}/iz.git &> /dev/null
 rm -rf /root/iz
 clear
