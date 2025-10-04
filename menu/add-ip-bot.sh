@@ -30,7 +30,7 @@ MYIP=$(curl -sS ipv4.icanhazip.com)
 ipsaya=$(wget -qO- ipinfo.io/ip)
 data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 date_list=$(date +"%Y-%m-%d" -d "$data_server")
-data_ip="https://raw.githubusercontent.com/huutvpn/iz/main/admin"
+data_ip="https://raw.githubusercontent.com/huutvpn/izin/main/ip"
 checking_sc() {
   useexp=$(wget -qO- $data_ip | grep $ipsaya | awk '{print $3}')
   if [[ $date_list < $useexp ]]; then
@@ -54,7 +54,7 @@ checking_sc() {
 checking_sc
 
 TOKEN="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"
-REPO="https://github.com/huutvpn/iz.git"
+REPO="https://github.com/huutvpn/izin.git"
 EMAIL="oyohbi@gmail.com"
 USER="huutvpn"
 
@@ -94,7 +94,7 @@ clear
 echo -e "MASUKAN IP VPS YANG BELUM DI DAFTAR !"
 echo -e ""
 read -p "Input IP Address : " ip
-CLIENT_EXISTS=$(grep -w $ip /root/iz/ip | wc -l)
+CLIENT_EXISTS=$(grep -w $ip /root/izin/ip | wc -l)
 if [[ ${CLIENT_EXISTS} == '1' ]]; then
 echo "IP Already Exist !"
 exit 0
@@ -103,8 +103,8 @@ echo -e ""
  read -p "  MASUKKAN USERNAME TANPA SPASI (Example : huutvpn) : " name
 read -p "Input Expired Days : " exp11
 exp2=`date -d "$exp11 days" +"%Y-%m-%d"`
-echo "### ${name} ${exp2} ${ip}" >> /root/iz/ip
-cd /root/iz
+echo "### ${name} ${exp2} ${ip}" >> /root/izin/ip
+cd /root/izin
 git config --global user.email "${EMAIL}" &> /dev/null
 git config --global user.name "${USER}" &> /dev/null
 rm -rf .git &> /dev/null
@@ -112,9 +112,9 @@ git init &> /dev/null
 git add . &> /dev/null
 git commit -m register &> /dev/null
 git branch -M main &> /dev/null
-git remote add origin https://github.com/huutvpn/iz
-git push -f https://${TOKEN}@github.com/${USER}/iz.git &> /dev/null
-rm -rf /root/iz
+git remote add origin https://github.com/huutvpn/izin
+git push -f https://${TOKEN}@github.com/${USER}/izin.git &> /dev/null
+rm -rf /root/izin
 clear
 sleep 1
 echo "  Registering IP Address..."
@@ -137,7 +137,7 @@ TEXT="
 <b>Succes Create this IP</b>
 <code>◇━━━━━━━━━━━━━━◇</code>
 <i>Tunggu 5Menit Untuk Server KeRefresh</i>
-<b><i>Terima Kasih Sudah Menggunakan Script By Freetunnel</i></b>
+<b><i>Terima Kasih Sudah Menggunakan Script By huutvpn</i></b>
 curl -s --max-time 10 -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null"
 clear
 lane
@@ -148,4 +148,4 @@ echo -e "${y}  IP ADDRESS :${NC}${yell} $ip ${NC}"
 echo -e "${y}  REGISTERED :${NC}${yell} $today ${NC}"
 echo -e "${y}  EXPIRED ON :${NC}${yell} $exp2 ${NC}"
 lane
-Credit_Freetunnel
+Credit_huutvpn
